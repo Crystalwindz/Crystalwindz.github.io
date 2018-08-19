@@ -11,4 +11,6 @@
 
 我使用的主题：[**hexo-theme-melody**](https://github.com/Molunerfinn/hexo-theme-melody)
 
+评论功能：使用了[**Gitment**](https://github.com/imsun/gitment)并参考[**hexo-theme-melody主题文档**](https://molunerfinn.com/hexo-theme-melody-doc/#/zh-Hans/third-party-support?id=%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F)进行配置
+
 右下角的看板娘是哪里来的：我使用了[**hexo-helper-live2d**](https://github.com/EYHN/hexo-helper-live2d)这个插件，很可爱对吧？
