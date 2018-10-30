@@ -48,9 +48,9 @@
             
             <tag> UNIX </tag>
             
-            <tag> 操作系统 </tag>
-            
             <tag> I/O </tag>
+            
+            <tag> 操作系统 </tag>
             
         </tags>
       
@@ -156,9 +156,9 @@
             
             <tag> UNIX </tag>
             
-            <tag> 文件 </tag>
-            
             <tag> 操作系统 </tag>
+            
+            <tag> 文件 </tag>
             
         </tags>
       
