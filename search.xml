@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>说说我对Haskell的执念</title>
+      <link href="/haskell_obsession/"/>
+      <url>/haskell_obsession/</url>
+      
+        <content type="html"><![CDATA[<p>先放上我个人认为很帅的图标：<br><img src="/haskell_obsession/haskell-logo.svg" alt="个人认为很帅气的图标"></p><p>谈到Haskell，当时我只是在网上偶然看到函数式编程，便起了兴趣，想去了解一下，毕竟大学时间比较多，多了解一些东西也是好的。经过知乎上一番搜索，最后是选择了Haskell来了解函数式语言，因为它比较<strong>纯</strong>（然而我现在也没接触过其他函数式语言，Lisp，Scala等，也不太懂到底怎么纯的……）。</p><p>既然想学，就要去搜一些Haskell的学习资料啦，现在让我来推荐的话，《Learn You a Haskell for Great Good!》、《Haskell WikiBook》、《Real World Haskell》大概是这三本，然后做做<a href="https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems" target="_blank" rel="noopener">H-99: Ninety-Nine Haskell Problems</a>就差不多入门了吧，然而我只看了第一本，初步领略了一下函数式编程的乐趣(?)就没再看了。</p><a id="more"></a><p><img src="/haskell_obsession/1.jpg" alt="我的入门书"></p><p>说说这本书，当时大概看了两个星期吧，前面还好，基本语法还是能明白的，到了后面就很迷糊了。没错，说的就是你，<strong>Monad</strong>。Monad专业劝退想学Haskell的人，我当时为了了解这东西，网上到处搜啊，知乎上看看，结果到现在记得最清楚的反而是那句让人哭笑不得的话：</p><p><strong>一个单子（Monad）说白了不过就是自函子范畴上的一个幺半群而已。</strong></p><p>自函子我能懂，幺半群我也知道，可这两个东西加起来又能干什么呢，这东西到底有什么实际含义呢，直到后来看了一个<a href="http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html" target="_blank" rel="noopener">图解Monad</a>才略微理解了一点，让我真正觉得恍然大悟的是《Haskell WikiBook》的<a href="https://en.wikibooks.org/wiki/Haskell/Category_theory" target="_blank" rel="noopener">Haskell/Category theory</a>，只有真正和范畴论结合在一起，才能深入理解Monad这东西。</p><p>那么我为什么又说我对Haskell有执念呢，因为今天我无意间看到了JS的回调地狱，忽然间就想到自己弃坑的Haskell，当时看到网上说，Monad这东西是可以优雅解决这个问题的，现在想想，Haskell通过高度抽象，把函数包了一层又一层，并有Functor、Applicative、Monad这些概念，就是为了<strong>纯</strong>，当然，也能优雅的解决一些过程式、面向对象语言的问题。于是自己仿佛又燃起了学习Haskell的热情，学习Haskell有一种学习数学的感觉，让我觉得还不错，但想了想马上就要实习生春招了，而自己意向方向的知识感觉还欠缺好多，便只好作罢。</p><p>从这件事反观一下，现在的时代节奏太快，人们未必能静下心来学一些东西，这几年算法大火，工资也高，学的人非常多，真正有技术的又有多少呢，当然更大了来说，整个IT都是这样，人们调侃说，嫌工资低，转行当程序员总没错，于是便进培训班培训培训，简历上吹吹牛，于是当个程序员，拿个还不错的工资。而我以后会不会也是如此，等到IT这行工资不行了，也转行去其它热门行业呢？</p><p>但愿自己以后不会盲目追逐，能静下心来学一些东西，深入学习技术，不只是Haskell，更是其它的无穷无尽的知识。也许我对Haskell的执念，不只是不愿做一个不懂Haskell的Haskell粉，更是对自己不要浮躁的警告吧，能够静下心来，不被名利所迷惑，有着追求，做自己真正想做的事。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常随笔 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> haskell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>负载均衡是什么</title>
       <link href="/load_balance/"/>
       <url>/load_balance/</url>
@@ -98,9 +121,9 @@
             
             <tag> UNIX </tag>
             
-            <tag> 操作系统 </tag>
-            
             <tag> I/O </tag>
+            
+            <tag> 操作系统 </tag>
             
         </tags>
       
@@ -206,9 +229,9 @@
             
             <tag> UNIX </tag>
             
-            <tag> 文件 </tag>
-            
             <tag> 操作系统 </tag>
+            
+            <tag> 文件 </tag>
             
         </tags>
       
