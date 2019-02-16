@@ -3,11 +3,38 @@
   
     
     <entry>
+      <title>谈谈写windz的收获</title>
+      <link href="/windz/"/>
+      <url>/windz/</url>
+      
+        <content type="html"><![CDATA[<p>项目地址：<a href="https://github.com/Crystalwindz/windz" target="_blank" rel="noopener">Crystalwindz/windz</a></p><p>经过一个半月的努力，windz库终于写完了。起初只是想做个Web服务器交课设，但这服务器越写越偏，越来越像一个网络库，于是就想，索性就写成网络库吧，都说C++程序员都喜欢造轮子，也许我也是。</p><p>一开始写Web服务器时，我也只是看过APUE、UNP，简单了解网络编程的人，实际写起来C++网络程序，也是相当困难，无从下手。万事开头难嘛，于是尝试在github上找找别人写的Web服务器，阅读源码来学习一下，有幸看到了<a href="https://github.com/linyacool/WebServer" target="_blank" rel="noopener">linyacool/WebServer</a>，readme写的相当详细，并大力推荐了陈硕的<a href="https://github.com/chenshuo/muduo" target="_blank" rel="noopener">chenshuo/muduo</a>和他的<a href="https://book.douban.com/subject/20471211/" target="_blank" rel="noopener">Linux多线程服务端编程</a>，我看到后当即就去学校图书馆借了一本。借来这本书，看到目录和书背上的一些问题，感觉无比痛快，我的疑问大部分都在上面有了详细的解答，上一次看书这么爽还是看Effective C++的时候。</p><p>于是便读了书，跟着书中的指引和源码，一步一步地把windz这个库写完了，通过读书和写这个库，我学到了太多太多：<br><a id="more"></a></p><ul><li>搞懂了Reactor模式：之前看过不少博客讲解Reactor模式，但都一知半解，以后要注意了，想学一些知识，不能只看理论知识，还是要落实到实际代码上去才能彻底搞懂；</li><li>熟悉了多线程编程和锁的使用：通过实际编写多线程的程序，能深刻体会到线程同步的困难和重要；</li><li>对内存控制，RAII理解更加深刻：muduo库中用到了enable_shared_from_this，shared_ptr, unique_ptr, weak_ptr，各种各样的智能指针，就算智能指针大大解决了内存泄露的问题，但实际用起来才会明白，不合理地使用智能指针，一样会造成内存泄漏(循环引用)，空悬指针(必须要严格遵守RAII，千万不要释放裸指针，所以也尽量使用make_shared, make_unique)等问题，至于enable_shared_from_this，想弄懂它的原理，更是要明白智能指针的实现细节——全局引用计数，weak_ptr和shared_ptr共享同一个全局引用计数；</li><li>知道了网络编程的各种细节：学过计算机网络，看过UNP，可到实际编写网络程序时才懂得基础是多么重要，三次握手四次挥手，socket，bind，listen，accept，connect，read，write，IO复用，每个环节都有各种各样要注意的细节，必须要理解每个参数的含义，返回值的含义，才能写出可靠的网络程序；</li><li>理解了代码规范的重要：整个windz总计4500多行，我全程按照Google C++规范编写，并注意了各种命名，头文件的包含顺序等，才能时刻清楚自己在写什么。4500行，感觉只能算是一个小数量的代码，我一个人单独编写，没有项目经验的我，勉强撑住了这次考验，也算是提高了阅读代码的能力。</li><li>熟悉一些工具：git，travis-ci，CMake，gdb，clang-format，CLion等；</li><li>其他的一些收获：踩踩C++本身的坑，学会测试自己的代码，conf文件规范，定时器的编写，熟悉Linux系统调用等。</li></ul><p>整体来说，写windz是处于学习目的，写的仍有很多我没发现的缺陷，仍需努力:(</p><p>以cloc截图结尾吧:)</p><p><img src="/windz/1.png" alt="cloc"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+            <tag> windz </tag>
+            
+            <tag> 网络库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>Redis设计与实现-数据库与持久化</title>
       <link href="/redis_db/"/>
       <url>/redis_db/</url>
       
-        <content type="html"><![CDATA[<h2 id="键空间"><a href="#键空间" class="headerlink" title="键空间"></a>键空间</h2><p>Redis是一个key-value数据库，RedisServer中有多个数据库，每个数据库都由一个redisDb结构表示，其中的dict字典保存了数据库中所有的键值对，dict称之为键空间：</p><ul><li>key就是数据库的键；</li><li>value就是数据库的值，具体为字符串、列表、哈希、集合、有序集合中的一种；</li></ul><p>假设这是一个现有的键空间：</p><p><img src="/redis_db/1.png" alt=""></p><p>添加键：</p><p><img src="/redis_db/2.png" alt=""></p><p>删除键：</p><p><img src="/redis_db/3.png" alt=""></p><p>更新键：</p><p><img src="/redis_db/4.png" alt=""></p><p><img src="/redis_db/5.png" alt=""></p><p>获取键：</p><p><img src="/redis_db/6.png" alt=""></p><p>由于这个键空间包括了几乎所有的数据，很多针对数据库的命令都是对这个键空间进行处理来完成的。</p><h2 id="键过期策略"><a href="#键过期策略" class="headerlink" title="键过期策略"></a>键过期策略</h2><p>和键空间类似，redisDb中的expires字典保存了所有设置了过期时间的键，这个过期字典中存着键的过期时间和键的引用，增删改查和键类似。</p><p>删除策略：</p><ul><li>定时删除：利用定时器，准时删除键，然而对cpu时间不友好，不灵活，redis没有采用；</li><li>惰性删除：当获取一个过期的键时，才删除它，但会浪费内存；</li><li>定期删除：每隔一段时间就检查一遍过期字典，删除过期的键，但不好确定间隔时间；</li></ul><p>Redis采用的后两种删除策略，在cpu时间和内存浪费之间努力平衡。</p><h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h3><p>RDB将内存数据存储在硬盘上，既可以手动执行，也可以让Redis定期自动执行，持久化的过程如下：</p><ul><li>BGSAVE：fork出一个子进程，然后子进程创建RDB文件，父进程继续处理请求；</li><li>SAVE：阻塞服务进程直至创建RDB文件完成。</li></ul><p>RDB的恢复会阻塞服务进程，直至恢复完成。</p><h3 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h3><p>AOF每次执行写命令就将写命令记录下来。具体过程：</p><ul><li>服务器每执行一个写命令，就将这个写命令添加到一个缓冲区里；</li><li>根据设置的时间，定期将缓冲区写入硬盘；</li></ul><p>AOF的恢复会创建一个伪客户端，由这个伪客户端执行保存的写命令来恢复。</p><p>AOF的重写：</p><ul><li>AOF重写可以降低AOF文件的冗余，听起来需要对现有的AOF文件进行处理，实际上根本用不到现有的AOF文件；</li><li>AOF重写会直接读取当前数据库的键空间，根据里面的键值对来生成相应的写命令；</li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="键空间"><a href="#键空间" class="headerlink" title="键空间"></a>键空间</h2><p>Redis是一个key-value数据库，RedisServer中有多个数据库，每个数据库都由一个redisDb结构表示，其中的dict字典保存了数据库中所有的键值对，dict称之为键空间：</p><ul><li>key就是数据库的键；</li><li>value就是数据库的值，具体为字符串、列表、哈希、集合、有序集合中的一种；</li></ul><p>假设这是一个现有的键空间：</p><p><img src="/redis_db/1.png" alt=""></p><p>添加键：<br><a id="more"></a><br><img src="/redis_db/2.png" alt=""></p><p>删除键：</p><p><img src="/redis_db/3.png" alt=""></p><p>更新键：</p><p><img src="/redis_db/4.png" alt=""></p><p><img src="/redis_db/5.png" alt=""></p><p>获取键：</p><p><img src="/redis_db/6.png" alt=""></p><p>由于这个键空间包括了几乎所有的数据，很多针对数据库的命令都是对这个键空间进行处理来完成的。</p><h2 id="键过期策略"><a href="#键过期策略" class="headerlink" title="键过期策略"></a>键过期策略</h2><p>和键空间类似，redisDb中的expires字典保存了所有设置了过期时间的键，这个过期字典中存着键的过期时间和键的引用，增删改查和键类似。</p><p>删除策略：</p><ul><li>定时删除：利用定时器，准时删除键，然而对cpu时间不友好，不灵活，redis没有采用；</li><li>惰性删除：当获取一个过期的键时，才删除它，但会浪费内存；</li><li>定期删除：每隔一段时间就检查一遍过期字典，删除过期的键，但不好确定间隔时间；</li></ul><p>Redis采用的后两种删除策略，在cpu时间和内存浪费之间努力平衡。</p><h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><h3 id="RDB"><a href="#RDB" class="headerlink" title="RDB"></a>RDB</h3><p>RDB将内存数据存储在硬盘上，既可以手动执行，也可以让Redis定期自动执行，持久化的过程如下：</p><ul><li>BGSAVE：fork出一个子进程，然后子进程创建RDB文件，父进程继续处理请求；</li><li>SAVE：阻塞服务进程直至创建RDB文件完成。</li></ul><p>RDB的恢复会阻塞服务进程，直至恢复完成。</p><h3 id="AOF"><a href="#AOF" class="headerlink" title="AOF"></a>AOF</h3><p>AOF每次执行写命令就将写命令记录下来。具体过程：</p><ul><li>服务器每执行一个写命令，就将这个写命令添加到一个缓冲区里；</li><li>根据设置的时间，定期将缓冲区写入硬盘；</li></ul><p>AOF的恢复会创建一个伪客户端，由这个伪客户端执行保存的写命令来恢复。</p><p>AOF的重写：</p><ul><li>AOF重写可以降低AOF文件的冗余，听起来需要对现有的AOF文件进行处理，实际上根本用不到现有的AOF文件；</li><li>AOF重写会直接读取当前数据库的键空间，根据里面的键值对来生成相应的写命令；</li></ul>]]></content>
       
       
       <categories>
@@ -167,9 +194,9 @@
             
             <tag> UNIX </tag>
             
-            <tag> I/O </tag>
-            
             <tag> 操作系统 </tag>
+            
+            <tag> I/O </tag>
             
         </tags>
       
@@ -275,9 +302,9 @@
             
             <tag> UNIX </tag>
             
-            <tag> 操作系统 </tag>
-            
             <tag> 文件 </tag>
+            
+            <tag> 操作系统 </tag>
             
         </tags>
       
@@ -375,9 +402,9 @@
       
         <tags>
             
-            <tag> 学习 </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> 学习 </tag>
             
         </tags>
       
