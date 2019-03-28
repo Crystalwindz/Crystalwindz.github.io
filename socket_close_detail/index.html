@@ -24,22 +24,22 @@
 <p><img src="/socket_close_detail/7.png" alt=""></p>
 <p>可看出进行的正常的四次挥手。</p>
 <p>那么这些现象涉及到的底层原理有什么呢，简单总结一下：</p>
-<ol>
+<ul>
 <li><p>全连接队列和半连接队列</p>
-<p> <img src="/socket_close_detail/8.jpg" alt=""></p>
-<p> 每个listen socket有两个队列，就是全连接队列和半连接队列，server收到client的syn后，把连接信息放入syns queue，并回复SYN+ACK，之后收到ACK就从syns queue中拿出队列放入accept queue。</p>
+<p>  <img src="/socket_close_detail/8.jpg" alt=""></p>
+<p>  每个listen socket有两个队列，就是全连接队列和半连接队列，server收到client的syn后，把连接信息放入syns queue，并回复SYN+ACK，之后收到ACK就从syns queue中拿出队列放入accept queue。</p>
 </li>
 <li><p>TCP连接的关闭细节</p>
 </li>
-</ol>
+</ul>
 <pre><code>![close](socket_close_detail/9.jpeg)
 
 ![shutdown](socket_close_detail/10.jpeg)
 
 细节都在上面那两张图了。
-</code></pre><ol>
+</code></pre><ul>
 <li><p>其他的需要思考的地方</p>
-<ol>
+<ul>
 <li><p>为何第一次握手的序列号是随机的？</p>
 <ul>
 <li>首先，如果每个TCP连接的序列号都从1开始的话，那么如果某个序列号为1的报文因为网络原因延迟，然后这个报文过了很久，在新的连接中又出现，服务器是无法区分的。对于不同的连接，应该避免这种情况，而对于同一个连接的两个不同实例，这会导致数据混乱，是更加严重的；</li>
@@ -47,11 +47,11 @@
 </ul>
 </li>
 <li><p>关于netstat的输出</p>
-<p> 可以看到Program一列有时候是-，按照前面的分析，可以知道此时这个连接不属于任何进程，这也能一定程度上加深对两个队列的理解：除非你调用accept，否则一个ESTABLISH的连接是不属于任何进程的。</p>
+<p>  可以看到Program一列有时候是-，按照前面的分析，可以知道此时这个连接不属于任何进程，这也能一定程度上加深对两个队列的理解：除非你调用accept，否则一个ESTABLISH的连接是不属于任何进程的。</p>
 </li>
-</ol>
+</ul>
 </li>
-</ol>
+</ul>
 <p>参考资料：</p>
 <ol>
 <li><a href="http://www.cnxct.com/something-about-phpfpm-s-backlog/" target="_blank" rel="noopener">TCP SOCKET中backlog参数的用途是什么？</a></li>
