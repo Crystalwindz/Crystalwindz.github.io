@@ -1,4 +1,4 @@
-# 欢迎来到我的博客！
+# 欢迎来到我的博客！[![Build Status](https://www.travis-ci.org/Crystalwindz/Crystalwindz.github.io.svg?branch=master)](https://www.travis-ci.org/Crystalwindz/Crystalwindz.github.io)
 
 ## 博客地址
 [**Crystalwindz's Blog**](http://crystalwindz.com/)
