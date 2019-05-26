@@ -21,18 +21,7 @@
 <li>强符号不能重复多次定义，否则链接报错；</li>
 <li>一个强符号和多个弱符号，链接器选择强符号；</li>
 <li>都是弱符号，选择占用空间最大的那个；</li>
-</ul>
-<p>强引用和弱引用：链接时的外部符号是必须要被重定位的，如果无法正确决议，链接器会报未定义错误，这是强引用，如果不报错则是弱引用。</p>
-<p>弱符号和弱引用的作用：弱符号可以被用户定义的强符号覆盖，使得程序可以自定义某些功能；弱引用使得程序即使缺少某些模块也能链接，提高程序的组合性。</p>
-<h2 id="静态链接"><a href="#静态链接" class="headerlink" title="静态链接"></a>静态链接</h2><p>预编译-&gt;编译(词法分析、语法分析、语义分析、中间代码生成、目标代码生成和优化)-&gt;汇编-&gt;静态链接：</p>
-<ul>
-<li>空间与地址分配：即虚拟地址空间分配，扫描所有输入目标文件，得到每个section的长度与属性，并收集所有symbol放到全局symbol表中，然后合并性质相同的section并分配虚拟空间地址，填入全局symbol表中；</li>
-<li>符号解析和重定位：根据读入的重定位表，得到重定位入口，进行符号解析，也就是在全局symbol表中查找相应的符号，得到符号地址后进行指令修正(重定位)，修改代码中对外部符号的引用处；</li>
-</ul>
-<h2 id="静态库链接"><a href="#静态库链接" class="headerlink" title="静态库链接"></a>静态库链接</h2><p>静态库可以看成是一组目标文件的集合，可以用ar打包或解压静态库，链接过程则和静态链接基本一致。</p>
-<h2 id="链接过程控制"><a href="#链接过程控制" class="headerlink" title="链接过程控制"></a>链接过程控制</h2><p>链接是个很复杂的过程，不过，可以用命令行参数、目标文件或链接控制脚本对链接过程进行控制，脚本语法在此不再赘述。</p>
-<h2 id="ABI兼容性"><a href="#ABI兼容性" class="headerlink" title="ABI兼容性"></a>ABI兼容性</h2><p>ABI是二进制层面的接口，这比API要更严格一些，API仅仅是源码级别的兼容，而ABI则要求内存模型、符号修饰标准、函数调用方式、寄存器使用约定等都要一致。</p>
-</div><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/go_study_note/">Go学习笔记</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-10</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Golang/">Golang</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Golang/">Golang</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/笔记/">笔记</a></span><div class="content"><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
+</ul></div><a class="more" href="/link_load_lib_note1/#more">阅读更多</a><hr></div><div class="recent-post-item article-container"><a class="article-title" href="/go_study_note/">Go学习笔记</a><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-04-10</time><span class="article-meta"><span class="article-meta__separator">|</span><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i><a class="article-meta__categories" href="/categories/Golang/">Golang</a></span><span class="article-meta tags"><span class="article-meta__separator">|</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/Golang/">Golang</a><span class="article-meta__link">-</span><i class="fa fa-tag article-meta__icon" aria-hidden="true"></i><a class="article-meta__tags" href="/tags/笔记/">笔记</a></span><div class="content"><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><ul>
 <li>for是Go中的while；</li>
 <li>if可以在判断之前执行一条语句；</li>
 <li>switch自动break，case无需为整数；</li>
