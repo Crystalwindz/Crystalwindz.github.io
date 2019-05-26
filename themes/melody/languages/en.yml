@@ -1,0 +1,49 @@
+sidebar:
+  articles: 文章
+  tags: 标签
+  categories: 分类
+  toggle_site: 文章详情
+  toggle_article: 站点概览
+  catalog: 目录
+  have_read: 你已经读了
+
+footer:
+  driven: Driven
+  theme: Theme
+
+copy:
+  success: Copy successfully
+  error: Copy error
+  noSupport: The browser does not support
+
+page:
+  articles: Articles
+  tag: Tag
+  category: Category
+  archives: Archives
+
+no_title: No title
+read_more: 阅读更多
+
+post:
+  wordcount: 字数
+  min2read: '阅读时长: %s 分钟'
+  copyright:
+    author: Author
+    link: Link
+    copyright_notice: Copyright Notice
+    copyright_content: 'All articles in this blog are licensed under
+      <a href="%s" target="_blank">%s</a> unless stating additionally.'
+
+
+search: Search
+algolia_search:
+  input_placeholder: Search for Posts
+  hits_empty: "We didn't find any results for the search: ${query}."
+  hits_stats: "${hits} results found in ${time} ms"
+
+local_search:
+  label: 本地搜索
+  input_placeholder: 搜索文章
+  hits_empty: "找不到您查询的内容:${query}"
+  powered_by: Powered by
