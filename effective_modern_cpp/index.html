@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="Hexo 3.8.0"><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="《Effective Modern C++》读后感"><meta name="keywords" content="C++11,Modern"><meta name="author" content="Crystalwindz,undefined"><meta name="copyright" content="Crystalwindz"><title>《Effective Modern C++》读后感 | Crystalwindz's Blog</title><link rel="shortcut icon" href="/favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.5.6"><link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><link rel="dns-prefetch" href="https://cdn.staticfile.org"><link rel="dns-prefetch" href="https://cdn.bootcss.com"><link rel="dns-prefetch" href="https://creativecommons.org"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容:${query}"}},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  }
+} </script></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar"><div class="toggle-sidebar-info text-center"><span data-toggle="站点概览">文章详情</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开头"><span class="toc-text">开头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#型别推导"><span class="toc-text">型别推导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#auto"><span class="toc-text">auto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#现代C"><span class="toc-text">现代C++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#智能指针"><span class="toc-text">智能指针</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#右值引用，移动语义，完美转发"><span class="toc-text">右值引用，移动语义，完美转发</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda表达式"><span class="toc-text">lambda表达式</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://s1.ax1x.com/2018/04/09/CFFVpQ.jpg"></div><div class="author-info__name text-center">Crystalwindz</div><div class="author-info__description text-center">Talk is cheap. Show me the code.</div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">文章</span><span class="pull-right">25</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">标签</span><span class="pull-right">32</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">分类</span><span class="pull-right">13</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" href="https://gentlezuo.github.io/" target="_blank">gentlezuo</a><a class="author-info-links__name text-center" href="https://1fishman.github.io/" target="_blank">1fishman</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://s1.ax1x.com/2018/11/22/FPvENR.jpg)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">Crystalwindz's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus"><a class="site-page social-icon search"><i class="fa fa-search"></i><span> Search</span></a><a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/categories">Categories</a><a class="site-page" href="/about">About</a></span></div><div id="post-info"><div id="post-title">《Effective Modern C++》读后感</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2019-06-12</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/C/">C++</a><div class="post-meta-wordcount"><span>字数: </span><span class="word-count">1.8k</span><span class="post-meta__separator">|</span><span>阅读时长: 5 分钟</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前几天学校图书馆进了一批新书，看了下，刚好有《Effective Modern C++》这本书，这本书一直想看，于是借来看了下。（PS：总共三本，一开始还是借不到的，只能预约，蛮意外的，原来我们学校有这么多人学C++吗，毕竟班里其他人都学的是Java……</p>
+<h2 id="开头"><a href="#开头" class="headerlink" title="开头"></a>开头</h2><p>献给爱犬，嗯，不过这次少了张图。关于C++11/14，在我之前写一个项目里用过并熟悉了下，所以这本书除了并发那里基础知识都没什么问题，那么来看看C++11/14又有什么坑呢？</p>
+<h2 id="型别推导"><a href="#型别推导" class="headerlink" title="型别推导"></a>型别推导</h2><p>推导，这一听就是模板了，虽然日常编码中模板用得是比较少的，不过看一看还是很有意思的：</p>
+<ul>
+<li>C++11中，模板型别推导多了一个万能引用 T&amp;&amp;，并且我还学到了数组和函数的指针退化，并且在引用情况下并不会退化；</li>
+<li>auto和模板推导基本一致，除了大括号表达式；</li>
+<li>decltype，恰如其名，就是准确推断类型，用来修饰auto就可以改变推导规则；</li>
+<li>查看推导结果，这还是信不过编译器吧，不过有时候这也是没办法的；<a id="more"></a>
+要点速记：</li>
+<li>模板型别推导过程中，引用性会被忽略；</li>
+<li>按值形参推导时，会忽略const和volatile；</li>
+<li>模板型别推导过程中，如果不是引用，数组和函数会退化为指针；</li>
+<li>auto规则与模板型别推导一致，除了大括号初始化(initializer_list)；</li>
+<li>C++14里，auto用于函数返回值和lambda形参使用模板型别推导而不是auto推导；</li>
+<li>对于左值表达式类型T，decltype推导出T&amp;；</li>
+<li>decltype(auto)改变auto推导规则为decltype规则；</li>
+</ul>
+<h2 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h2><p>之前我几乎不用auto，我对这种东西是不放心的，不过看了这章，我感觉我可以多用一点auto了：</p>
+<ul>
+<li>auto有挺多好处，但也有一些坏处，不过auto推导的类型都能用IDE看，所以可以稍微放心；</li>
+<li>利用显式型别也就是强制转换来帮助auto推导，我觉得蛮蠢的:(</li>
+</ul>
+<p>要点速记：</p>
+<ul>
+<li>auto首先是少打字，能防止未初始化，保证你的变量类型正确，避免一些兼容问题，还能简化重构，少犯点错；</li>
+<li>代理类会让auto推导出错误的类型；</li>
+</ul>
+<h2 id="现代C"><a href="#现代C" class="headerlink" title="现代C++"></a>现代C++</h2><p>这一章讨论了现代C++的一些做法，可以避免原来的一些问题，让你的代码更modern:)</p>
+<ul>
+<li>我倾向用()初始化，除非是想用initializer_list，至于防止窄型型别转换，这个自己注意就好；</li>
+<li>建议nullptr，没什么好说的；</li>
+<li>using可读性更高，TMP那边的typename, ::type是很恶心，不过写得少，总之，用using；</li>
+<li>enum class显然更好，类型安全，不污染命名空间；</li>
+<li>delete还能删除普通函数的，受教了；</li>
+<li>this还能区分左右值，基本没见过，不过现在明白了:)</li>
+<li>只要能const就const，迭代器也是；</li>
+<li>异常安全……希望以后能深入，还是很迷惑，真要做到异常安全太难了；</li>
+<li>constexpr，这是要累死编译器；</li>
+<li>C++11里面新加了移动函数两兄弟了，编译器会做更多事了:(</li>
+</ul>
+<p>要点速记：</p>
+<ul>
+<li>函数重载决议时，{}初始化几乎总会和initialize_list匹配；</li>
+<li>对于vector这种，()和{}初始化差别很大，这种接口设计是很失败的；</li>
+<li>在模板里，用()还是{}是个问题，建议文档描述；</li>
+<li>用nullptr而不是NULL；</li>
+<li>用using而不是typedef；</li>
+<li>尽可能用enum class，除非没办法；</li>
+<li>用delete和default；</li>
+<li>override和final可以用一用；</li>
+<li>优先用const_iterator；</li>
+<li>能加noexcept就加；</li>
+<li>constexpr都是const，反之不一定；</li>
+<li>constexpr函数如果传入编译期值就返回编译期值，否则和普通函数一样；</li>
+<li>编译期值某种意义上总是好的，虽然编译慢了点；</li>
+<li>只有类中不显式声明复制操作，移动操作，析构函数，移动操作才会由编译器自己生成；</li>
+<li>如果声明了移动函数，那么复制函数会被删除；</li>
+<li>成员函数模板不会影响复制和移动成员函数的生成；</li>
+</ul>
+<h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p>智能指针能避免资源泄露，但要明白，本质是要理解资源所用权，裸指针没有资源所用权，为此还有个observer_ptr表达这个东西，不过这东西褒贬不一，我是觉得这东西还行：</p>
+<ul>
+<li>RAII思想是十分重要的，这也是要明白资源所有权问题，嗯……我感觉我应该抽时间学学Rust了；</li>
+<li>make_unique竟然是在C++14里加进去的，看不明白:(</li>
+</ul>
+<p>要点速记：</p>
+<ul>
+<li>unique_ptr是独占所有权；</li>
+<li>unique_ptr的删除器类型是模板参数，而shared_ptr是个属性；</li>
+<li>shared_ptr是共享所有权；</li>
+<li>shared_ptr有个控制块，这个控制块是实现weak_ptr和shared_form_this的关键；</li>
+<li>shared_ptr的空间占用是比较大的；</li>
+<li>weak_ptr没有资源所有权，不过比起裸指针，它能知道资源是否还活着；</li>
+<li>优先用make_unique和make_shared，少用new；</li>
+<li>make_shared能降低内存分配次数，但有时候这会导致内存占用过大；</li>
+<li>对于unique_ptr，pImpl手法需要声明很多特种成员函数；</li>
+</ul>
+<h2 id="右值引用，移动语义，完美转发"><a href="#右值引用，移动语义，完美转发" class="headerlink" title="右值引用，移动语义，完美转发"></a>右值引用，移动语义，完美转发</h2><p>左右值我感觉是C++11里相当重要的概念了，至于完美转发，总觉得很丑陋……来看看有意思的地方：</p>
+<ul>
+<li>move和forward真的移动和转发了吗？没有；</li>
+<li>万能引用万能吗？嗯……其实是引用折叠；</li>
+<li>完美转发完美吗？不完美；</li>
+<li>万能引用虽说能尽可能压榨性能，但重载时遇到的问题，解决方案也太……；</li>
+<li>移动好像并没有我想象中那么高效；</li>
+</ul>
+<p>要点速记：</p>
+<ul>
+<li>move和forward不过是编译期类型强制转换而已，运行期它们什么事也不做；</li>
+<li>万能引用必须是T&amp;&amp;形式，而且必须涉及到型别推导；</li>
+<li>用右值初始化万能引用得到右值引用，用左值初始化万能引用得到左值引用；</li>
+<li>对右值引用或万能引用的最后一次使用再move或forward；</li>
+<li>如果局部对象有可能RVO，就不要move或forward了；</li>
+<li>最好不要把万能引用用作重载，它太能匹配了，转发构造函数时的问题最严重；</li>
+<li>非要把万能引用用作重载的话，可以考虑传值、标签分配、enable_if等TMP方式；</li>
+<li>引用折叠在这四种语境中发生：模板实例化、auto型别推导、using和typedef、decltype；</li>
+<li>引用折叠时，只要有一个左值引用，折叠结果就是左值引用，都是右值引用折叠结果才是右值引用；</li>
+<li>完美转发失败含义：模板推导失败、模板推导结果错误；</li>
+<li>完美转发失败场景：{}初始化、0或NULL的空指针、仅有声明的static const成员变量、模板或重载函数名称、位域；</li>
+</ul>
+<h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2></div></article><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C-11/">C++11</a><a class="post-meta__tags" href="/tags/Modern/">Modern</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/link_load_lib_note3/"><span>《链接、装载与库》——运行库</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><footer><div class="layout" id="footer"><div class="copyright">&copy;2018 - 2019 By Crystalwindz</div><div class="framework-info"><span>Driven - </span><a href="http://hexo.io"><span>Hexo</span></a><span class="footer-separator">|</span><span>Theme - </span><a href="https://github.com/Molunerfinn/hexo-theme-melody"><span>Melody</span></a></div><div class="busuanzi"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><span id="busuanzi_container_page_pv"><i class="fa fa-file-o"></i><span id="busuanzi_value_page_pv"></span><span></span></span></div></div></footer><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="/js/third-party/anime.min.js"></script><script src="/js/third-party/jquery.min.js"></script><script src="/js/third-party/jquery.fancybox.min.js"></script><script src="/js/third-party/velocity.min.js"></script><script src="/js/third-party/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.5.6"></script><script src="/js/fancybox.js?version=1.5.6"></script><script src="/js/sidebar.js?version=1.5.6"></script><script src="/js/copy.js?version=1.5.6"></script><script src="/js/fireworks.js?version=1.5.6"></script><script src="/js/transition.js?version=1.5.6"></script><script src="/js/scroll.js?version=1.5.6"></script><script src="/js/head.js?version=1.5.6"></script><script src="/js/search/local-search.js"></script><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fa fa-times"></i></span></div><div class="search-mask"></div><script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":110,"height":216,"hOffset":-12,"vOffset":-7},"mobile":{"show":false},"react":{"opacityDefault":0.9,"opacityOnHover":0.5},"log":false});</script></body></html>
